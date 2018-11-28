@@ -1,0 +1,12 @@
+-- YOUR CODE HERE
+
+main = do
+  putStrLn "Introduce a filename:"
+  fname <- getLine
+  textdata <- readFile fname
+  let wordlist = toWordList textdata
+  putStrLn "Report:"
+  putStrLn ("\t" ++ (show $ length wordlist) ++ " words")
+  putStrLn ("\t" ++ (show $ countCommonWords wordlist) ++ " common words")
+  putStrLn "\nHistogram of the most frequent words (excluding common words):"
+  putStr $ makeHistogram $ sortWords $ countWords $ dropCommonWords $ wordlist
